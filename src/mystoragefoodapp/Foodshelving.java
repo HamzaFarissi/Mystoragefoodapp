@@ -46,7 +46,67 @@ public class Foodshelving {
         }
     }
     
-   
+    public boolean FullStore(){
+        return storage.size() == max_capacity;
+    }
+    
+    foodfather MyFood(int myFoodOption, double weight, LocalDate dateFood){
+        switch (myFoodOption){
+            case 1 -> {
+                return new Burger(weight, dateFood);
+            }
+            case 2 -> {
+                return new Pizza(weight, dateFood);
+            }
+            case 3 -> {
+                return new Fries(weight, dateFood);
+            }
+            case 4 -> {
+                return new Sandwich(weight, dateFood);
+            }
+            case 5 -> {
+                return new Hotdog(weight, dateFood);
+            }
+        }
+        return null;
+    }
+    
+    
+    public static class Burger extends foodfather {
+
+        public Burger(double weight, LocalDate bestBeforeDate) {
+            super("Burger", weight, bestBeforeDate);
+        }
+    }
+
+    public static class Pizza extends foodfather {
+
+        public Pizza(double weight, LocalDate bestBeforeDate) {
+            super("Pizza", weight, bestBeforeDate);
+        }
+    }
+
+    public static class Fries extends foodfather {
+
+        public Fries(double weight, LocalDate bestBeforeDate) {
+            super("Fries", weight, bestBeforeDate);
+        }
+    }
+
+    public static class Sandwich extends foodfather {
+
+        public Sandwich(double weight, LocalDate bestBeforeDate) {
+            super("Sandwich", weight, bestBeforeDate);
+        }
+    }
+
+    public static class Hotdog extends foodfather {
+
+        public Hotdog(double weight, LocalDate bestBeforeDate) {
+            super("Hotdog", weight, bestBeforeDate);
+        }
+    }
+    
     
     
 }
