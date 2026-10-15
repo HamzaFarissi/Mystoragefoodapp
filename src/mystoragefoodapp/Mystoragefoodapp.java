@@ -18,6 +18,7 @@ public class Mystoragefoodapp {
         
         System.out.println("Hamza Lhemza ");
         System.out.println("Hamza lhemza 2 ");
+        System.out.println("test 2");
     }
     
 }
