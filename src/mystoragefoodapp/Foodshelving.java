@@ -13,101 +13,148 @@ import java.util.List;
  * @author DELL
  */
 public class Foodshelving {
-    
-    int max_capacity = 10; 
-    public List<foodfather> storage= new ArrayList<>(); 
+
+    // Set the max number of food items
+    int max_capacity = 10;
+
+    // Make a list to store food
+    public List<foodfather> storage = new ArrayList<>();
+
+    // Count the food items
     public int count;
 
-    public void AddFood(int option, double weight, LocalDate dateFood){
-        //Thay are more space for food
+    // Add food to the storage
+    public void AddFood(int option, double weight, LocalDate dateFood) {
+
+        // Add the new food to the list
         storage.add(MyFood(option, weight, dateFood));
     }
-    
-    public void RemoveFood(String lf){
+
+    // Remove food from the storage
+    public void RemoveFood(String lf) {
+
+        // Check if the list is empty
         if (storage.isEmpty()) return;
-        
+
+        // Check if the rule is LIFO
         if ("LIFO".equals(lf)) {
+
+            // Remove the last food
             storage.remove(storage.size() - 1);
+
+        // Check if the rule is FIFO
         } else if ("FIFO".equals(lf)) {
+
+            // Remove the first food
             storage.remove(0);
             System.out.println("\n   fdgfdfdfdgfdgf");
         }
     }
-    
+
+    // Pick one food from the storage
     public foodfather PickAnyFood(String lf) {
+
+        // Check if the list is empty
         if (storage.isEmpty()) {
             return null;
         }
-        
-        if ("LIFO".equals(lf)){
-            return storage.get(storage.size()-1);
+
+        // Check if the rule is LIFO
+        if ("LIFO".equals(lf)) {
+
+            // Get the last food
+            return storage.get(storage.size() - 1);
+
+        // Get the first food
         } else {
             return storage.get(0);
         }
     }
-    
-    public boolean FullStore(){
+
+    // Check if the storage is full
+    public boolean FullStore() {
         return storage.size() == max_capacity;
     }
-    
-    foodfather MyFood(int myFoodOption, double weight, LocalDate dateFood){
-        switch (myFoodOption){
+
+    // Make food from the selected option
+    foodfather MyFood(int myFoodOption, double weight, LocalDate dateFood) {
+
+        // Check the food option
+        switch (myFoodOption) {
+
+            // Create a Burger
             case 1 -> {
                 return new Burger(weight, dateFood);
             }
+
+            // Create a Pizza
             case 2 -> {
                 return new Pizza(weight, dateFood);
             }
+
+            // Create Fries
             case 3 -> {
                 return new Fries(weight, dateFood);
             }
+
+            // Create a Sandwich
             case 4 -> {
                 return new Sandwich(weight, dateFood);
             }
+
+            // Create a Hotdog
             case 5 -> {
                 return new Hotdog(weight, dateFood);
             }
         }
+
+        // Return nothing if the option is wrong
         return null;
     }
-    
-    
+
+    // Burger class
     public static class Burger extends foodfather {
 
+        // Create a Burger with its weight and date
         public Burger(double weight, LocalDate bestBeforeDate) {
             super("Burger", weight, bestBeforeDate);
         }
     }
 
+    // Pizza class
     public static class Pizza extends foodfather {
 
+        // Create a Pizza with its weight and date
         public Pizza(double weight, LocalDate bestBeforeDate) {
             super("Pizza", weight, bestBeforeDate);
         }
     }
 
+    // Fries class
     public static class Fries extends foodfather {
 
+        // Create Fries with their weight and date
         public Fries(double weight, LocalDate bestBeforeDate) {
             super("Fries", weight, bestBeforeDate);
         }
     }
 
+    // Sandwich class
     public static class Sandwich extends foodfather {
 
+        // Create a Sandwich with its weight and date
         public Sandwich(double weight, LocalDate bestBeforeDate) {
             super("Sandwich", weight, bestBeforeDate);
         }
     }
 
+    // Hotdog class
     public static class Hotdog extends foodfather {
 
+        // Create a Hotdog with its weight and date
         public Hotdog(double weight, LocalDate bestBeforeDate) {
             super("Hotdog", weight, bestBeforeDate);
         }
     }
-    
-    
-    
-}
 
+}
