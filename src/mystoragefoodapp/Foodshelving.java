@@ -156,5 +156,32 @@ public class Foodshelving {
             super("Hotdog", weight, bestBeforeDate);
         }
     }
+    
+    // Display all food items currently in storage
+    public void DisplayAllElements() {
+    
+    // Check if the list is empty
+    if (storage.isEmpty()) {
+        System.out.println("Storage is empty.");
+        return;
+    }
+
+    // Print table title
+    System.out.println("--- ALL STORED FOOD ---");
+
+    // Loop through each item in the storage list
+    for (int i = 0; i < storage.size(); i++) {
+        
+        // Get the current food item
+        foodfather item = storage.get(i);
+
+        // Print item details one by one
+        System.out.println("Number: " + (i + 1));
+        System.out.println("Name: " + item.foodName);
+        System.out.println("Weight: " + item.foodWeight);
+        System.out.println("Date: " + item.foodDate);
+        System.out.println("------------------------");
+    }
+}
 
 }
